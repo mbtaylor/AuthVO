@@ -1,0 +1,30 @@
+OAuth2 Requirements:
+   - no phishing
+   - client can authenticate without prior knowledge
+   - try to restrict service options to something clients can have a go
+     at implementing.
+       - provide services with some guidance about what flow(s) to offer
+       - but we could start with one and try to add more where that
+         doesn't work.  RFC8628 Device Authorization Grant?
+
+   - prompt for token?
+      - we could do that by reacting to simple "Bearer" challenge
+        by prompting for token.  Need to establish/assume domain (realm?)
+
+Current PR problems:
+   - in the specification part sec 3.2 please say what the service and
+        client must do (with explicit references to relevant RFCs etc),
+        don't just give typical exchanges
+   - in the examples part section 5, give typical exchanges
+   - we *need* a robust way to avoid token leakage,
+        e.g. mandatory scoping (domain) information obtained from the
+        discovery/registration/token endpoint, OR implicit origin/realm-based
+        scoping inferred from the challenge
+   - access_url and standard_id don't have to be present for all schemes,
+        only where appropriate.
+        Especially don't try to force OAuth value into standard_id
+        when it only makes sense for the OAuth challenge.
+   - if we're using a .well-known URL, why does it need to be specified
+        in parameters of the challenge?
+   - for behaviour already described in external documents (e.g. refresh)
+        just refer to those documents

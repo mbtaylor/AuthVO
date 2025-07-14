@@ -1,0 +1,14 @@
+Jesus comment July 4:
+
+ - static client_id: I think it's a non-starter.  It's not standard
+   and Russ says Rubin won't do it.
+
+ - "The goal of this PR is that clients will ... prompt the user explicitly
+    for a token" - is it?  We could, but I don't see that in the text.
+   In that case we can just use Bearer, only need advice to clients.
+   That's what I said in my response to Russ.  If everybody is OK with
+   that, we can stop there.  *Don't* just add information into the
+   Bearer challenge saying where to get a token, that's a phishing attack.
+
+ - "The PR aims to stay flexible rather than mandate one particular flow" -
+   not too many please

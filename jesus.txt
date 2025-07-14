@@ -1,0 +1,36 @@
+the access_url is said to point to the RFC8414 discovery document.
+"discovery document" is not a term used in RFC8414.
+RFC8414 defines some of the keys in the "typical response" cited,
+but doesn't define the device_authorization_endpoint.
+Is this supposed to be standards compliant, or is adding the
+device_authorization_endpoint a requirement of the ivoa_bearer protocol?
+If so please make it explicit that this is required rather than
+just providing a typical response.
+
+It's not necessary to repeat text that's already in standards,
+but from the text currently in place it's not easy to see which
+standards are in play at which stage of the communications,
+and to disentangle what's an example and what is actually required.
+
+
+
+The problem I'm trying to solve in this document is how a client
+can perform authenticated access to a service *without prior knowledge
+about that service*, using only information available from the challenge
+to bootstrap the communications.
+
+Doing it using a pre-registered client means I have to know what client_id
+to use for the service I'm talking to, so I need prior knowledge about
+that service.  You could get round that if we had IVOA-federated 
+client_ids, but I'm guessing that would not be easy to arrange.
+
+So while an access method based on pre-registered client_ids is 
+a reasonable way for clients to talk to an OAuth2 service,
+and works for instance in astroquery where the user specifies which
+service it's going to use before attempting access, I don't believe
+it belongs in this document.  That may mean that services unwilling
+to offer RFC7591 dynamic client registration will not be accessible
+to clients that work as specified by this document,
+though it doesn't mean that no OAuth2 services will be so accessible.
+
+
