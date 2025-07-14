@@ -28,3 +28,35 @@ Current PR problems:
         in parameters of the challenge?
    - for behaviour already described in external documents (e.g. refresh)
         just refer to those documents
+
+
+------
+"Brief recap of AuthVO draft status" by me
+
+   - Main problem trying to solve: how do clients (typically non-browser)
+     authenticate to services without prior knowledge about them?
+
+       - e.g. topcat given a TAP URL - how to log in?
+       - DataLink URL inside VOTable to restricted resource?
+
+   - Discussions for several years on this, eventual conclusion:
+       use www-authenticate challenges (e.g. RFC 9110 sec 11)
+
+   - Some are usable as-is: Basic Auth
+   - Some require additional information:
+        cookies (where do you get a cookie)
+        X509 certificates (where do you get a certificate)
+
+   - We have prototyped these over last couple of years and have them
+     working in production (e.g. ESDC, CADC)
+   - Write up the details in the current draft - codification of
+     existing operational services, so they can be implemented elsewhere
+
+   - Structure of the document:
+       - Sec 3 normative
+       - Sec 5 examples
+       - would expect a new subsection in each place for bearer
+
+   - These work fine for services happy to use cookies/Basic Auth/X.509.
+   - But many services are based on OAuth2 and/or OIDC - that's where we are.
+       
