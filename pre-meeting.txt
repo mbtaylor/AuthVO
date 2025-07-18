@@ -59,4 +59,13 @@ Current PR problems:
 
    - These work fine for services happy to use cookies/Basic Auth/X.509.
    - But many services are based on OAuth2 and/or OIDC - that's where we are.
+
+-----
+post-meeting:
+   James said use RFC9728 instead of ivoa_bearer or similar.
+   OK.  But I don't think this allows us to say where a token can
+   be used (list of multiple origins)
+   UNLESS we require origins or similar in the "aud" claim of
+   RFC7662 or RFC7159.
+   
        
